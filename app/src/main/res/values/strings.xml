@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">A02 Client Project</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="go_to_the_map">Go to the Map</string>
+    <string name="title_activity_maps2">Map</string>
+</resources>
