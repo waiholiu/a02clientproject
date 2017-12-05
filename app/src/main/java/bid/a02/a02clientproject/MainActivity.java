@@ -60,4 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void btnGoToTheDb(View view) {
+        Intent intent = new Intent(MainActivity.this, DbActivity.class);
+        startActivity(intent);
+    }
 }
