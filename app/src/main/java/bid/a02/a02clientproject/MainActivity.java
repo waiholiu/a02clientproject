@@ -65,4 +65,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, DbActivity.class);
         startActivity(intent);
     }
+
+    public void btnGoToServer(View view) {
+        Intent intent = new Intent(MainActivity.this, ServerActivity.class);
+        startActivity(intent);
+    }
 }
