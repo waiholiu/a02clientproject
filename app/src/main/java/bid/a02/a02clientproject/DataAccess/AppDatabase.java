@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.DataAccess;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

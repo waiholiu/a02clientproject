@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import bid.a02.a02clientproject.DataAccess.DbActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

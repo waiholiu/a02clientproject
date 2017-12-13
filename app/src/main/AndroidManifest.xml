@@ -44,7 +44,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".DbActivity"
+            android:name=".DataAccess.DbActivity"
             android:label="@string/title_activity_db"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

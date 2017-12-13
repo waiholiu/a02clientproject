@@ -12,10 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import bid.a02.a02clientproject.DataAccess.MySingleton;
 
 
 public class ServerActivity extends AppCompatActivity {
@@ -54,18 +54,7 @@ public class ServerActivity extends AppCompatActivity {
 //// Add the request to the RequestQueue.
 //        queue.add(stringRequest);
 
-
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("grant_type", "password");
-            jsonBody.put("username", "2@test.com");
-            jsonBody.put("password", "Sample1!");
-
-        }
-        catch(Exception ex)
-        {}
-
-        queue.add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest myRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 mTextView.setText("onResponse = \n " + response.toString());
@@ -91,8 +80,8 @@ public class ServerActivity extends AppCompatActivity {
                 return params;
             }
 
-        });
+        };
 
-
+        MySingleton.getInstance(this).addToRequestQueue(myRequest);
     }
 }

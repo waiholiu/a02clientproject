@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import bid.a02.a02clientproject.DataAccess.AppDatabase;
+import bid.a02.a02clientproject.DataAccess.House;
+
 public class HouseViewModel extends AndroidViewModel {
 
     private AppDatabase appDatabase;

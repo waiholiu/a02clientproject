@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.DataAccess;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
+
+import bid.a02.a02clientproject.HouseViewModel;
+import bid.a02.a02clientproject.R;
 
 public class DbActivity extends AppCompatActivity {
 
