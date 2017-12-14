@@ -1,9 +1,5 @@
 package bid.a02.a02clientproject.DataAccess;
 
-/**
- * Created by wai on 13/12/17.
- */
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -16,11 +12,12 @@ import com.google.gson.JsonSyntaxException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-public class GsonRequest<T> extends Request<T> {
+public class GsonRequest<T, RequestType> extends Request<T> {
     private final Gson gson = new Gson();
     private final Class<T> clazz;
     private final Map<String, String> headers;
     private final Response.Listener<T> listener;
+    private final RequestType requestObj;
 
     /**
      * Make a GET request and return a parsed object from JSON.
@@ -30,11 +27,30 @@ public class GsonRequest<T> extends Request<T> {
      * @param headers Map of request headers
      */
     public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
-                       Response.Listener<T> listener, Response.ErrorListener errorListener) {
-        super(Method.GET, url, errorListener);
+                       Response.Listener<T> listener, Response.ErrorListener errorListener, RequestType requestObj, int httpVerb) {
+        super(httpVerb, url, errorListener);
         this.clazz = clazz;
         this.headers = headers;
         this.listener = listener;
+        this.requestObj = requestObj;
+    }
+
+
+    @Override
+    public byte[] getBody() throws AuthFailureError {
+
+        String jsonInString = gson.toJson(requestObj);
+        try {
+            return jsonInString.getBytes("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String getBodyContentType() {
+        return "application/x-www-form-urlencoded; charset=UTF-8";
     }
 
     @Override

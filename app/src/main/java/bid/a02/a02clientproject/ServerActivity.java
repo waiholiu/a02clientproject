@@ -22,6 +22,7 @@ import java.util.Map;
 
 import bid.a02.a02clientproject.DataAccess.GsonRequest;
 import bid.a02.a02clientproject.DataAccess.MySingleton;
+import bid.a02.a02clientproject.DataAccess.RegisterRequest;
 import bid.a02.a02clientproject.DataAccess.TopicDto;
 
 
@@ -105,13 +106,27 @@ public class ServerActivity extends AppCompatActivity {
 
     public void btnGetAllTopics(View view) {
 
-        String url = "https://testbasicauth20170222085409.azurewebsites.net/api/topics";
+//        String url = "https://testbasicauth20170222085409.azurewebsites.net/api/topics";
+//
+//        GsonRequest<TopicDto[], Object> myReq = new GsonRequest<TopicDto[], Object>(url,
+//                TopicDto[].class, null,
+//                createSuccessListener(), // listener for success
+//                createErrorListener(), null, Request.Method.GET);  // listener for failure
+//        MySingleton.getInstance(this).addToRequestQueue(myReq);
 
-        GsonRequest<TopicDto[]> myReq = new GsonRequest<TopicDto[]>(url,
-                TopicDto[].class, null,
-                createSuccessListener(), // listener for success
-                createErrorListener());  // listener for failure
-        MySingleton.getInstance(this).addToRequestQueue(myReq);
+        String registerUrl = "https://testbasicauth20170222085409.azurewebsites.net/api/account/register";
+
+        RegisterRequest req = new RegisterRequest();
+        req.Name = "fdsafdsa";
+        req.Email = "android@android.com";
+        req.ConfirmPassword = "password1!";
+        req.Password = "password1!";
+
+        GsonRequest<Void, RegisterRequest> registerReq = new GsonRequest<Void, RegisterRequest>(registerUrl,
+                null, null,
+                null, // listener for success
+                createErrorListener(), req, Request.Method.POST);  // listener for failure
+        MySingleton.getInstance(this).addToRequestQueue(registerReq);
 
     }
 
@@ -127,6 +142,9 @@ public class ServerActivity extends AppCompatActivity {
         };
 
     }
+
+
+
 
     private Response.ErrorListener createErrorListener() {
 
