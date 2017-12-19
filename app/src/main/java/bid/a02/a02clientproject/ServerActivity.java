@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import bid.a02.a02clientproject.DataAccess.GsonRequest;
+import bid.a02.a02clientproject.DataAccess.GsonJsonRequest;
 import bid.a02.a02clientproject.DataAccess.MySingleton;
 import bid.a02.a02clientproject.DataAccess.RegisterRequest;
 import bid.a02.a02clientproject.DataAccess.TopicDto;
@@ -104,9 +104,9 @@ public class ServerActivity extends AppCompatActivity {
         MySingleton.getInstance(this).addToRequestQueue(myRequest);
     }
 
-    public void btnGetAllTopics(View view) {
+    public void btnGetAllTopics(View view) throws JSONException {
 
-//        String url = "https://testbasicauth20170222085409.azurewebsites.net/api/topics";
+//        String url = "http://192.168.1.17:45456/api/topics";
 //
 //        GsonRequest<TopicDto[], Object> myReq = new GsonRequest<TopicDto[], Object>(url,
 //                TopicDto[].class, null,
@@ -114,19 +114,37 @@ public class ServerActivity extends AppCompatActivity {
 //                createErrorListener(), null, Request.Method.GET);  // listener for failure
 //        MySingleton.getInstance(this).addToRequestQueue(myReq);
 
-        String registerUrl = "https://testbasicauth20170222085409.azurewebsites.net/api/account/register";
+//        String registerUrl = "https://testbasicauth20170222085409.azurewebsites.net/api/account/register";
+        String registerUrl = "http://192.168.1.17:45456/api/account/register";
 
         RegisterRequest req = new RegisterRequest();
-        req.Name = "fdsafdsa";
-        req.Email = "android@android.com";
-        req.ConfirmPassword = "password1!";
-        req.Password = "password1!";
+        req.Name = "fdsakkkfdsa";
+        req.Email = "andandroid.com";
+        req.ConfirmPassword = "password234";
+        req.Password = "password234";
 
-        GsonRequest<Void, RegisterRequest> registerReq = new GsonRequest<Void, RegisterRequest>(registerUrl,
-                null, null,
+//        GsonRequest<Void, RegisterRequest> registerReq = new GsonRequest<Void, RegisterRequest>(registerUrl,
+//                null, null,
+//                null, // listener for success
+//                createErrorListener(), req, Request.Method.POST);  // listener for failure
+
+//        public GsonJsonRequest(int httpVerb, String url, Class<T> responseClazz, RequestType request, Class<RequestType> requestClazz, Map<String, String> headers,
+//                Response.Listener<T> listener, Response.ErrorListener errorListener)
+
+//        GsonJsonRequest<Void, RegisterRequest> registerReqJson = new GsonJsonRequest<Void, RegisterRequest>(Request.Method.POST, registerUrl, null,
+//                registerReq,
+//                RegisterRequest.class, null,
+//                null, // listener for success
+//                createErrorListener());  // listener for failure
+
+        GsonJsonRequest<Void, RegisterRequest> registerReqJson = new GsonJsonRequest<Void, RegisterRequest>(Request.Method.POST, registerUrl, null,
+                req,
+                RegisterRequest.class, null,
                 null, // listener for success
-                createErrorListener(), req, Request.Method.POST);  // listener for failure
-        MySingleton.getInstance(this).addToRequestQueue(registerReq);
+                createErrorListener());  // listener for failure
+
+        MySingleton.getInstance(this).getRequestQueue().getCache().clear();
+        MySingleton.getInstance(this).addToRequestQueue(registerReqJson);
 
     }
 
