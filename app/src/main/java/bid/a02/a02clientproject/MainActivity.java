@@ -74,4 +74,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ServerActivity.class);
         startActivity(intent);
     }
+
+    public void btnGoToRetrofit(View view) {
+        Intent intent = new Intent(MainActivity.this, RetrofitActivity.class);
+        startActivity(intent);
+    }
 }
