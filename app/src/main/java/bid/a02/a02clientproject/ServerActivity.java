@@ -51,7 +51,7 @@ public class ServerActivity extends AppCompatActivity {
 
                 try {
                     token = new JSONObject(response.toString());
-                    mTextView.setText("token = \n " + token.get("access_token"));
+                    mTextView.setText("token = \n " + token.get("accessToken"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
