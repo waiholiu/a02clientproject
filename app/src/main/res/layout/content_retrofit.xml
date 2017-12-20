@@ -32,5 +32,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <Button
+            android:id="@+id/btnGetUserTopics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get UserTopics"
+            android:onClick="btnGetUserTopics"/>
+
+        <TextView
+            android:id="@+id/tvUserTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
