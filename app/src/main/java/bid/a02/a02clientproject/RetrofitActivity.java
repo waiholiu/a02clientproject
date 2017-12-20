@@ -1,5 +1,6 @@
 package bid.a02.a02clientproject;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -38,7 +39,11 @@ public class RetrofitActivity extends AppCompatActivity {
     }
 
 
+    private TokenViewModel tokenViewModel;
+
     public void retrofitlogin_click(View view) {
+
+        tokenViewModel = ViewModelProviders.of(this).get(TokenViewModel.class);
 
         Object customDateAdapter = new Object() {
             final DateFormat dateFormat;
@@ -74,9 +79,12 @@ public class RetrofitActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()) {
+
+                    tokenViewModel.setTokenResponse(response.body());
+
                     // tasks available
                     TextView tv = (TextView)findViewById(R.id.tvToken);
-                    tv.setText(response.body().accessToken);
+                    tv.setText(tokenViewModel.getTokenResponse().accessToken);
 
 
                 } else {
