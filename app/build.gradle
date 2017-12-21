@@ -39,6 +39,4 @@ dependencies {
     compile 'com.squareup.moshi:moshi-adapters:1.5.0'
 
 
-
-
 }

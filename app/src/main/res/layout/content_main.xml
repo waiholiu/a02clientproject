@@ -45,6 +45,15 @@
             android:onClick="btnGoToTheDb"
             android:text="Go to the DB"
              />
+
+        <Button
+            android:id="@+id/btnGoToCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="btnCamera"
+            android:text="Camera"
+            />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

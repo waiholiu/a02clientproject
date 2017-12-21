@@ -77,4 +77,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, RetrofitActivity.class);
         startActivity(intent);
     }
+
+    public void btnCamera(View view) {
+        Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+        startActivity(intent);
+    }
+
 }

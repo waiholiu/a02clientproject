@@ -95,4 +95,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_retrofit">RetrofitActivity</string>
+    <string name="title_activity_camera">CameraActivity</string>
 </resources>
