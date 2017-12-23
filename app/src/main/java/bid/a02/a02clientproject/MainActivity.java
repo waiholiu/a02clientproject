@@ -83,4 +83,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void btnNotification_click(View view) {
+        Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+        startActivity(intent);
+    }
 }

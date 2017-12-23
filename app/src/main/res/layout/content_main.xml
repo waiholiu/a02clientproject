@@ -54,6 +54,13 @@
             android:onClick="btnCamera"
             android:text="Camera"
             />
+
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnNotification_click"
+            android:text="Notifications" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
