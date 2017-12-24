@@ -34,6 +34,9 @@ public class NotificationActivity extends AppCompatActivity {
 
     private int count = 0;
     private final int mNotificationId = 1;
+    private final int mSpecialNotificationId = 2;
+
+
     public void btnNotify(View view) {
         // The id of the channel.
         String CHANNEL_ID = "my_channel_01";
@@ -52,7 +55,7 @@ public class NotificationActivity extends AppCompatActivity {
         // addParentStack specifies the parent stack it should create the fake stack from. This
         // info is stored in manifest
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-       stackBuilder.addParentStack(CameraActivity.class);
+        stackBuilder.addParentStack(CameraActivity.class);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
@@ -69,5 +72,38 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     public void btnSpecialNotification(View view) {
+
+        // Instantiate a Builder object.
+        String CHANNEL_ID = "my_channel_01";
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_normal)
+                        .setContentTitle("My special notification ")
+                        .setContentText("Take you to special activity! + ")
+                        .setAutoCancel(true);
+
+        // Creates an Intent for the Activity
+        Intent notifyIntent =
+                new Intent(this, SpecialNotificationActivity.class);
+        // Sets the Activity to start in a new, empty task
+        notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // Creates the PendingIntent
+        PendingIntent notifyPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        notifyIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        // Puts the PendingIntent into the notification builder
+        mBuilder.setContentIntent(notifyPendingIntent);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(mSpecialNotificationId, mBuilder.build());
+
     }
 }

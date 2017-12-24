@@ -89,7 +89,12 @@
         <activity
             android:name=".SpecialNotificationActivity"
             android:label="@string/title_activity_special_notification"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+
+            ></activity>
     </application>
 
 </manifest>
