@@ -61,6 +61,13 @@
             android:layout_height="wrap_content"
             android:onClick="btnNotification_click"
             android:text="Notifications" />
+
+        <Button
+            android:id="@+id/btnHouses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnHouse_click"
+            android:text="Houses" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

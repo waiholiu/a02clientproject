@@ -87,4 +87,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
         startActivity(intent);
     }
+
+    public void btnHouse_click(View view) {
+        Intent intent = new Intent(MainActivity.this, HousesActivity.class);
+        startActivity(intent);
+    }
 }
+

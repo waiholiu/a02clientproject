@@ -98,4 +98,5 @@
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_special_notification">SpecialNotificationActivity</string>
+    <string name="title_activity_houses">HousesActivity</string>
 </resources>
