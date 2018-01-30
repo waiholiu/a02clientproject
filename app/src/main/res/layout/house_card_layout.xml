@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="4dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:onClick="btnOpenHouse"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:onClick="btnOpenHouse">
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/houseName"

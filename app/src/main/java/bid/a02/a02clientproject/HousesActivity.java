@@ -75,6 +75,7 @@ public class HousesActivity extends AppCompatActivity {
     public void btnOpenHouse(View view) {
         Intent intent = new Intent(HousesActivity.this, HouseDetailActivity.class);
         intent.putExtra("mode", "edit");
+        intent.putExtra("houseId", view.getTag().toString());
 
         startActivity(intent);
     }

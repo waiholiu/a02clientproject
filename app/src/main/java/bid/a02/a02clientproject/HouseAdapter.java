@@ -36,6 +36,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.HouseViewHol
         House house = houseList.get(i);
         houseViewHolder.vAddress.setText(house.address);
         houseViewHolder.vNotes.setText(house.notes);
+        houseViewHolder.view.setTag(house.id);
 
     }
 
@@ -63,11 +64,13 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.HouseViewHol
         protected TextView vNotes;
         protected TextView vEmail;
         protected TextView vTitle;
+        protected View view;
 
         public HouseViewHolder(View v) {
             super(v);
             vAddress =  (TextView) v.findViewById(R.id.houseName);
             vNotes = (TextView)  v.findViewById(R.id.houseNotes);
+            view = v;
 
         }
     }
