@@ -94,7 +94,7 @@
             android:taskAffinity=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HousesActivity"
+            android:name=".HouseListActivity.HousesActivity"
             android:label="@string/title_activity_houses"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HouseDetailActivity"></activity>

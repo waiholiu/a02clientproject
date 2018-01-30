@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.ViewModels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

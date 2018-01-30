@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.HouseListActivity;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import bid.a02.a02clientproject.DataAccess.House;
+import bid.a02.a02clientproject.R;
 
 /**
  * Created by wai on 27/12/17.
@@ -46,7 +47,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.HouseViewHol
         // which is just to inflate the card_layout view and return it as a ContactViewHolder
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.house_card_layout, viewGroup, false);
+                inflate(R.layout.houselist_card_layout, viewGroup, false);
 
         return new HouseViewHolder(itemView);
     }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import bid.a02.a02clientproject.DataAccess.House;
+import bid.a02.a02clientproject.ViewModels.HouseViewModel;
 
 public class DbActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.HouseListActivity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bid.a02.a02clientproject.DataAccess.House;
+import bid.a02.a02clientproject.HouseDetailActivity;
+import bid.a02.a02clientproject.ViewModels.HouseViewModel;
+import bid.a02.a02clientproject.R;
 
 public class HousesActivity extends AppCompatActivity {
 
@@ -26,7 +29,7 @@ public class HousesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_houses);
+        setContentView(R.layout.houselist_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

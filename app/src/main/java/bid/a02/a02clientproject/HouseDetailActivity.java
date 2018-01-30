@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import bid.a02.a02clientproject.DataAccess.House;
+import bid.a02.a02clientproject.ViewModels.HouseViewModel;
 
 public class HouseDetailActivity extends AppCompatActivity {
 
