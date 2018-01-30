@@ -18,43 +18,55 @@ public class HouseDetailActivity extends AppCompatActivity {
 
     EditText evAddress;
     EditText evNotes;
+    String mode;
 
+    House currentHouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_detail);
 
-        String mode = getIntent().getExtras().getString("mode").toString();
+        evAddress = (EditText) findViewById(R.id.txtAddress);
+        evNotes = (EditText) findViewById(R.id.txtNotes);
 
-        TextView tvTitle = (TextView)findViewById(R.id.tvTitle);
 
-        if(mode.equals("new"))
-        {
+        mode = getIntent().getExtras().getString("mode").toString();
+
+        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+
+        if (mode.equals("new")) {
             tvTitle.setText("New House");
-        }
-        else
-        {
+        } else {
             tvTitle.setText("existing house");
+            String houseId = getIntent().getExtras().getString("houseId").toString();
+
+            houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
+            currentHouse = houseViewModel.getHouseById(Integer.parseInt(houseId));
+            evAddress.setText(currentHouse.address);
+            evNotes.setText(currentHouse.notes);
+
+
         }
 
-        evAddress = (EditText)findViewById(R.id.txtAddress);
-        evNotes = (EditText)findViewById(R.id.txtNotes);
 
     }
 
     private HouseViewModel houseViewModel;
 
-    private void SaveHouse(){
+    private void SaveHouse() {
 
-        House myHouse = new House();
-        myHouse.address = evAddress.getText().toString();
-        myHouse.notes = evAddress.getText().toString();
+        if (mode.equals("new")) {
+            currentHouse = new House();
+        }
 
-
+        currentHouse.address = evAddress.getText().toString();
+        currentHouse.notes = evNotes.getText().toString();
         houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
-        houseViewModel.addHouse(myHouse);
+        houseViewModel.addHouse(currentHouse);
         NavUtils.navigateUpFromSameTask(this);
+
+
     }
 
     @Override

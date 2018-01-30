@@ -21,6 +21,11 @@ public class HouseViewModel extends AndroidViewModel {
         appDatabase = AppDatabase.getDatabase(this.getApplication());
     }
 
+
+    public House getHouseById(int id){
+        return appDatabase.houseDao().getById(id);
+    }
+
     private MutableLiveData<List<House>> mHouses;
 
     public MutableLiveData<List<House>> getHouses() {
