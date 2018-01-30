@@ -21,10 +21,42 @@ public class HouseViewModel extends AndroidViewModel {
         appDatabase = AppDatabase.getDatabase(this.getApplication());
     }
 
+    private MutableLiveData<House> mHouse;
 
-    public House getHouseById(int id){
-        return appDatabase.houseDao().getById(id);
+    public MutableLiveData<House> getHouseById(int id){
+
+        House house = null;
+        try {
+            house = new
+                    getHouseByIdDataAsyncTask(appDatabase).execute(id).get();
+            if (mHouse == null) {
+                mHouse = new MutableLiveData<House>();
+            }
+            mHouse.setValue(house);
+
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+
+        }
+        return mHouse;
     }
+
+    private static class getHouseByIdDataAsyncTask extends AsyncTask<Integer,
+            Void, House> {
+
+        private AppDatabase db;
+
+        public getHouseByIdDataAsyncTask(AppDatabase userDatabase) {
+            db = userDatabase;
+        }
+
+        @Override
+        protected House doInBackground(Integer... ints) {
+            return db.houseDao().getById(ints[0]);
+        }
+
+    }
+
 
     private MutableLiveData<List<House>> mHouses;
 

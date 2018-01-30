@@ -42,7 +42,7 @@ public class HouseDetailActivity extends AppCompatActivity {
             String houseId = getIntent().getExtras().getString("houseId").toString();
 
             houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
-            currentHouse = houseViewModel.getHouseById(Integer.parseInt(houseId));
+            currentHouse = houseViewModel.getHouseById(Integer.parseInt(houseId)).getValue();
             evAddress.setText(currentHouse.address);
             evNotes.setText(currentHouse.notes);
 
