@@ -67,7 +67,7 @@ public class DbActivity extends AppCompatActivity {
         myHouse.address = "hello333";
 
         houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
-        houseViewModel.addHouse(myHouse);
+        houseViewModel.saveHouse(myHouse);
 
     }
 }

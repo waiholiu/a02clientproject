@@ -95,7 +95,7 @@ public class HouseViewModel extends AndroidViewModel {
     }
 
 
-    public void addHouse(House house) {
+    public void saveHouse(House house) {
         new AddHouseAsyncTask(appDatabase).execute(house);
         getHouses();
 

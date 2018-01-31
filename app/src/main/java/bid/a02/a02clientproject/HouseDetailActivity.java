@@ -63,7 +63,7 @@ public class HouseDetailActivity extends AppCompatActivity {
         currentHouse.address = evAddress.getText().toString();
         currentHouse.notes = evNotes.getText().toString();
         houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
-        houseViewModel.addHouse(currentHouse);
+        houseViewModel.saveHouse(currentHouse);
         NavUtils.navigateUpFromSameTask(this);
 
 
