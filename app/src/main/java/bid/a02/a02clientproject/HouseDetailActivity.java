@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import bid.a02.a02clientproject.DataAccess.House;
@@ -19,6 +21,7 @@ public class HouseDetailActivity extends AppCompatActivity {
     EditText evAddress;
     EditText evNotes;
     String mode;
+    Spinner spinnerRooms;
 
     House currentHouse;
 
@@ -29,6 +32,18 @@ public class HouseDetailActivity extends AppCompatActivity {
 
         evAddress = (EditText) findViewById(R.id.txtAddress);
         evNotes = (EditText) findViewById(R.id.txtNotes);
+
+        spinnerRooms = (Spinner) findViewById(R.id.spinnerNoOfRooms);
+
+        Integer[] roomArray = new Integer[] { 1,2,3,4,5,6};
+
+
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>( this,android.R.layout.simple_spinner_item,roomArray );
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinnerRooms.setAdapter(adapter);
 
 
         mode = getIntent().getExtras().getString("mode").toString();
@@ -45,6 +60,7 @@ public class HouseDetailActivity extends AppCompatActivity {
             currentHouse = houseViewModel.getHouseById(Integer.parseInt(houseId)).getValue();
             evAddress.setText(currentHouse.address);
             evNotes.setText(currentHouse.notes);
+            spinnerRooms.setSelection(currentHouse.noOfRooms - 1, true);
 
 
         }
@@ -62,6 +78,7 @@ public class HouseDetailActivity extends AppCompatActivity {
 
         currentHouse.address = evAddress.getText().toString();
         currentHouse.notes = evNotes.getText().toString();
+        currentHouse.noOfRooms =  (int)spinnerRooms.getSelectedItem();
         houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
         houseViewModel.saveHouse(currentHouse);
         NavUtils.navigateUpFromSameTask(this);
