@@ -1,4 +1,4 @@
-package bid.a02.a02clientproject;
+package bid.a02.a02clientproject.HouseDetailActivity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import bid.a02.a02clientproject.DataAccess.House;
+import bid.a02.a02clientproject.R;
 import bid.a02.a02clientproject.ViewModels.HouseViewModel;
 
 public class HouseDetailActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class HouseDetailActivity extends AppCompatActivity {
     EditText evNotes;
     String mode;
     Spinner spinnerRooms;
+    Spinner customSpinner;
 
     House currentHouse;
 
@@ -35,15 +37,28 @@ public class HouseDetailActivity extends AppCompatActivity {
 
         spinnerRooms = (Spinner) findViewById(R.id.spinnerNoOfRooms);
 
-        Integer[] roomArray = new Integer[] { 1,2,3,4,5,6};
+        Integer[] roomArray = new Integer[]{1, 2, 3, 4, 5, 6};
 
 
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>( this,android.R.layout.simple_spinner_item,roomArray );
-// Specify the layout to use when the list of choices appears
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, roomArray);
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         spinnerRooms.setAdapter(adapter);
+
+
+        CustomSpinnerAdapterInput[] inputs = {
+            new CustomSpinnerAdapterInput("var1", "sub1"),
+                    new CustomSpinnerAdapterInput("var2", "sub2"),
+                    new CustomSpinnerAdapterInput("var3", "sub3")
+        };
+
+        customSpinner = (Spinner) findViewById(R.id.spinnerCustom);
+        // first parameter is context which is this activity
+        // second parameter is the xml file for each row
+        // third parameter is the data to be passed in
+        customSpinner.setAdapter(new CustomSpinnerAdapter(this, inputs));
 
 
         mode = getIntent().getExtras().getString("mode").toString();
@@ -78,7 +93,7 @@ public class HouseDetailActivity extends AppCompatActivity {
 
         currentHouse.address = evAddress.getText().toString();
         currentHouse.notes = evNotes.getText().toString();
-        currentHouse.noOfRooms =  (int)spinnerRooms.getSelectedItem();
+        currentHouse.noOfRooms = (int) spinnerRooms.getSelectedItem();
         houseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
         houseViewModel.saveHouse(currentHouse);
         NavUtils.navigateUpFromSameTask(this);

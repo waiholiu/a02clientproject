@@ -97,7 +97,7 @@
             android:name=".HouseListActivity.HousesActivity"
             android:label="@string/title_activity_houses"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HouseDetailActivity"></activity>
+        <activity android:name=".HouseDetailActivity.HouseDetailActivity"></activity>
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>

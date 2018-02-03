@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bid.a02.a02clientproject.DataAccess.House;
-import bid.a02.a02clientproject.HouseDetailActivity;
+import bid.a02.a02clientproject.HouseDetailActivity.HouseDetailActivity;
 import bid.a02.a02clientproject.ViewModels.HouseViewModel;
 import bid.a02.a02clientproject.R;
 

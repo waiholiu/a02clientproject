@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bid.a02.a02clientproject.HouseDetailActivity">
+    tools:context="bid.a02.a02clientproject.HouseDetailActivity.HouseDetailActivity">
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
 
         <TextView
@@ -47,27 +47,51 @@
 
         </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_airline_seat_individual_suite_black_24dp" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinnerNoOfRooms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:spinnerMode="dialog"
-            />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_airline_seat_individual_suite_black_24dp" />
 
+            <Spinner
+                android:id="@+id/spinnerNoOfRooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tvLabelForCustomSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/colorPrimary" />
+
+            <Spinner
+                android:id="@+id/spinnerCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dialog" />
+
+
+        </LinearLayout>
 
 
 
