@@ -28,6 +28,13 @@
             android:text="Create a special notification"
             android:onClick="btnSpecialNotification"/>
 
+        <Button
+            android:id="@+id/btnAddCounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to counter"
+            android:onClick="btnAddCounter"/>
+
         <bid.a02.a02clientproject.customViews.MyCustomView
                 android:id="@+id/custView"
             android:layout_width="fill_parent"
@@ -35,6 +42,7 @@
             android:layout_margin="5dp"
             custom:circleColor="#ff0099"
             custom:circleLabel="Hello"
-            custom:labelColor="#ffff66" />
+            custom:labelColor="#ffff66"
+            custom:labelCounter="2"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

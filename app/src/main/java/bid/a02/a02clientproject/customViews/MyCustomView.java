@@ -31,12 +31,15 @@ public class MyCustomView extends View {
             circleText = a.getString(R.styleable.MyCustomView_circleLabel);
             circleCol = a.getInteger(R.styleable.MyCustomView_circleColor, 0);//0 is default
             labelCol = a.getInteger(R.styleable.MyCustomView_labelColor, 0);
+            labelCounter = a.getInteger(R.styleable.MyCustomView_labelCounter, 1);
+
         } finally {
             a.recycle();
         }
 
     }
 
+    public int labelCounter;
 
     //circle and text colors
     private int circleCol, labelCol;
@@ -76,6 +79,10 @@ public class MyCustomView extends View {
 
         //draw the text using the string attribute and chosen properties
         canvas.drawText(circleText, viewWidthHalf, viewHeightHalf, circlePaint);
+
+        canvas.drawText(Integer.toString(labelCounter), viewWidthHalf + 20, viewWidthHalf + 20,  circlePaint);
+
+
     }
 
 

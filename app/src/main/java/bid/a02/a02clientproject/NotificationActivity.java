@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import bid.a02.a02clientproject.customViews.MyCustomView;
+
 public class NotificationActivity extends AppCompatActivity {
 
     @Override
@@ -69,6 +71,14 @@ public class NotificationActivity extends AppCompatActivity {
         // mNotificationId is a unique integer your app uses to identify the
         // notification.
         mNotificationManager.notify(mNotificationId, mBuilder.build());
+    }
+
+    public void btnAddCounter(View view)
+    {
+        MyCustomView myCustomView = (MyCustomView) findViewById(R.id.custView);
+        myCustomView.labelCounter++;
+        myCustomView.invalidate();
+
     }
 
     public void btnSpecialNotification(View view) {
