@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -26,5 +27,14 @@
             android:layout_height="wrap_content"
             android:text="Create a special notification"
             android:onClick="btnSpecialNotification"/>
+
+        <bid.a02.a02clientproject.customViews.MyCustomView
+                android:id="@+id/custView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            custom:circleColor="#ff0099"
+            custom:circleLabel="Hello"
+            custom:labelColor="#ffff66" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -12,11 +12,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -89,12 +92,19 @@ public class CameraActivity extends AppCompatActivity {
 
                 GridLayout grid = (GridLayout)findViewById(R.id.gridPhotos);
 
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
-                ImageView myImage = new ImageView(this);
+                Bitmap myBitmap = notTheBestThumbnail(mCurrentPhotoPath);
+//                ImageView myImage = new ImageView(this);
+//                myImage.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        myImage.f
+//                    }
+//                });
 
-                myImage.setImageBitmap(myBitmap);
-                grid.addView(myImage);
+//                myImage.setImageBitmap(myBitmap);
+//                grid.addView(myImage);
 
             }
 
@@ -122,5 +132,27 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
+    Bitmap imageBitmap;
+    public Bitmap notTheBestThumbnail(String file) {
+        byte[] imageData = null;
+        try
+        {
+
+            final int THUMBNAIL_SIZE = 190;
+
+            FileInputStream fis = new FileInputStream(file); //file is the path to the image-to-be-thumbnailed.
+            imageBitmap = BitmapFactory.decodeStream(fis);
+            imageBitmap = Bitmap.createScaledBitmap(imageBitmap, THUMBNAIL_SIZE, THUMBNAIL_SIZE, false);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos); //What image format and level of compression to use.
+            imageData = baos.toByteArray();
+
+        }
+        catch(Exception ex) {
+            Log.e("Something did not work", "True");
+        }
+        return imageBitmap;
+    }
 
 }
